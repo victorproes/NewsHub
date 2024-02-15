@@ -1,0 +1,15 @@
+<ion-header [translucent]="true" mode="ios" class="class="ion-no-border>
+  <ion-toolbar>
+    <ion-title>
+      Noticias Favoritas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="favoriteArticles.length > 0; else noFavorites">
+    <app-articles [articles]="favoriteArticles"></app-articles>
+  </ng-container>
+  <ng-template #noFavorites>
+    <p>No hay artículos favoritos.</p>
+  </ng-template>
+</ion-content>

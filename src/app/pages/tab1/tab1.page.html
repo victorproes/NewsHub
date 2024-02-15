@@ -1,0 +1,23 @@
+<!-- src/app/pages/tab1/tab1.page.html -->
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" mode="ios" class="ion-no-border">
+    <ion-toolbar>
+      <ion-row>
+        <ion-col align="right">
+          <ion-searchbar [(ngModel)]="searchValue" placeholder="Buscar noticias" class="ion-text-center"></ion-searchbar>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Utiliza el pipe filter para filtrar las noticias por título -->
+  <app-articles [articles]="articles | filter:searchValue:'title'">
+  </app-articles>
+
+  <ion-infinite-scroll threshold="25%" position="bottom" (ionInfinite)="loadData()">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

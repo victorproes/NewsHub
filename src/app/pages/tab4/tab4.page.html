@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Añadir Paisaje
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (submit)="onSubmit()" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">País</ion-label>
+        <ion-input type="text" name="country" [(ngModel)]="formData.country" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Provincia</ion-label>
+        <ion-input type="text" name="province" [(ngModel)]="formData.province" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Foto</ion-label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      </ion-item>
+    </ion-list>
+    
+    <ion-button type="submit" expand="block" [disabled]="!isFormValid()">Subir Foto</ion-button>
+  </form>
+
+  <!-- Mostrar los datos guardados -->
+  <div *ngIf="submitted && formData">
+    <h2>Paisaje Añadido</h2>
+    <p><strong>País:</strong> {{ formData.country }}</p>
+    <p><strong>Provincia:</strong> {{ formData.province }}</p>
+    <p><strong>Foto:</strong></p>
+    <img *ngIf="photoData" [src]="photoData" alt="Foto del paisaje">
+  </div>
+</ion-content>
