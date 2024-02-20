@@ -24,6 +24,7 @@ export class NewsService {
       params: {
         apiKey: apiKey,
         country: 'us',
+        language:'es',
       }
     });
   }
